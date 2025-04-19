@@ -52,4 +52,11 @@ model_choice = st.radio("Choose Model", ("Decision Tree", "Random Forest"))
 # Predict button
 if st.button("Predict"):
     if model_choice == "Decision Tree":
-        prediction = dt.predict(user_encoded)[_
+        prediction = dt.predict(user_encoded)[0]
+    else:
+        prediction = rf.predict(user_encoded)[0]
+
+    # Decode target label
+    predicted_label = df['play'].unique()[prediction]
+    
+    st.success(f"Prediction: {predicted_label}")
