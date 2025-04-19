@@ -12,7 +12,7 @@ def load_data():
     return pd.read_csv(url)
 
 df = load_data()
-st.title("🌤️ Weather Prediction App")
+st.title("Weather Prediction App")
 st.write("### Raw Dataset")
 st.dataframe(df)
 
@@ -35,7 +35,7 @@ rf = RandomForestClassifier(max_depth=2, random_state=100)
 rf.fit(X_train, y_train)
 
 # User input section
-st.write("## 🔍 Make a Prediction")
+st.write("## Make a Prediction")
 
 # Collect input for each feature
 user_input = {}
@@ -52,12 +52,4 @@ model_choice = st.radio("Choose Model", ("Decision Tree", "Random Forest"))
 # Predict button
 if st.button("Predict"):
     if model_choice == "Decision Tree":
-        prediction = dt.predict(user_encoded)[0]
-    else:
-        prediction = rf.predict(user_encoded)[0]
-
-    # Decode target label
-    label_mapping = dict(zip(df_encoded['play'], df['play']))
-    predicted_label = df['play'].unique()[prediction]
-    
-    st.success(f"Prediction: **{predicted_label}** 🎯")
+        prediction = dt.predict(user_encoded)[_
